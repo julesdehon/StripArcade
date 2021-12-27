@@ -1,17 +1,19 @@
-from strip import AsciiStrip
-from game import ClassicPong
-from input_listener import KeyboardListener, InputListener
-from gui_adapters import get_gui_adapters
-from audio import ComputerSoundPlayer
+from games import ClassicPong
+from menu import Menu
+from computer_sound_player import ComputerSoundPlayer
+from button_listener import ButtonListener
+from rgb_strip import NeoPixelStrip
 
 
 def main():
-    # strip = AsciiStrip(40)
-    strip, input_listener = get_gui_adapters(20)
+    strip = NeoPixelStrip()
+    input_listener = ButtonListener()
     sound_device = ComputerSoundPlayer()
-    # input_listener = KeyboardListener()
-    game = ClassicPong(strip, input_listener, audio=sound_device)
-    game.start()
+    games = [
+        ClassicPong(strip, input_listener, audio=sound_device, initial_speed=2)
+    ]
+    menu = Menu(strip, input_listener, sound_device, games)
+    menu.start()
 
 
 if __name__ == '__main__':

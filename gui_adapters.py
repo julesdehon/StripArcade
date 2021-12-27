@@ -1,12 +1,13 @@
 import PySimpleGUI as sg
-from colour import Colour
-from strip import Strip
-from input_listener import InputListener, Command, KeyboardListener
+from interfaces.colour import Colour
+from interfaces.strip import Strip
+from interfaces.input_listener import InputListener, Command
 from threading import Thread
 
 
 class GuiStrip(Strip):
     def __init__(self, size, input_listener):
+        super().__init__()
         layout = [[sg.Text('Some text on Row 1')],
                   [sg.Graph(canvas_size=(400, 400), graph_bottom_left=(0, 0), graph_top_right=(400, 400),
                             background_color='white', key='graph')]]
