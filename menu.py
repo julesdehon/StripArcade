@@ -26,6 +26,7 @@ class Menu:
         while True:
             if old_game != self.current_game:
                 self.games[self.current_game].display_thumbnail()
+                old_game = self.current_game
             if self.start_game:
                 self.start_game = False
                 self.start_game_animation()

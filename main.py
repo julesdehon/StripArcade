@@ -1,4 +1,4 @@
-from games import ClassicPong
+from games import ClassicPong, SinglePlayerPong
 from menu import Menu
 from computer_sound_player import ComputerSoundPlayer
 from button_listener import ButtonListener
@@ -10,7 +10,8 @@ def main():
     input_listener = ButtonListener()
     sound_device = ComputerSoundPlayer()
     games = [
-        ClassicPong(strip, input_listener, audio=sound_device, initial_speed=2)
+        ClassicPong(strip, input_listener, audio=sound_device, initial_speed=2),
+        SinglePlayerPong(strip, input_listener, audio=sound_device, initial_speed=2)
     ]
     menu = Menu(strip, input_listener, sound_device, games)
     menu.start()
